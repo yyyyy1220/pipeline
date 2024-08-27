@@ -1,8 +1,10 @@
-Getting started
-1. download LD data
-1KGref_plinkfile
-LD_1kg
-LDpred2_lassosum2_corr_1kg
+
+# Getting started
+
+1. Download LD data
+	1KGref_plinkfile
+	LD_1kg
+	LDpred2_lassosum2_corr_1kg
 
 2. Download MAF data
 
@@ -10,46 +12,38 @@ LDpred2_lassosum2_corr_1kg
 
 4. Launch R and install required libraries
 
-code
-install.packages(c('optparse','bigreadr','readr','stringr', 'caret', 'SuperLearner', 'glmnet', 'MASS', 'Rcpp', 'RcppArmadillo', 'inline', 'doMC', ‘foreach'))
-
-example code for preparing data
-………
+    install.packages(c('optparse','bigreadr','readr','stringr', 'caret', 'SuperLearner', 'glmnet', 'MASS', 'Rcpp', 'RcppArmadillo', 'inline', 'doMC', ‘foreach'))
 
 
+# Use PennPrs
 
-Use pennPrs
-These are two two scripts, single_ancestry and multi_ancestry.
+These are two scripts, single_ancestry and multi_ancestry.
 
-n_eff: Sample size per variant. Note that for binary traits, it is effective sample sizes = 4 / (1 / N_control + 1 / N_case); and for continuous traits, it is simply the sample size.
+## Single Ancestry
 
+    Rscript <path_to_single-ancestry.R> \
+      --userID <userID> \
+      --submissionID <submissionID> \
+      --method <method> \
+      --trait <trait> \
+      --race <race> \
+      --LDrefpanel <LDrefpanel> \
+      --k <k> \
+      --partitions <partitions> \
+      --ndelta <ndelta> \
+      --nlambda <nlambda> \
+      --lambda.min.ratio <lambda.min.ratio> \
+      --alpha <alpha> \
+      --p_seq <p_seq> \
+      --sparse <sparse> \
+      --kb <kb> \
+      --Pvalthr <Pvalthr> \
+      --R2 <R2> \
+      --ensemble <ensemble> \
+      --verbose <verbose> \
+      --temp_path <temp_path>
 
-
-Single
-code
-Rscript /home/ubuntu/pennprs/backend/code/single-ancestry.R \
-  --userID <userID> \
-  --submissionID <submissionID> \
-  --method <method> \
-  --trait <trait> \
-  --race <race> \
-  --LDrefpanel <LDrefpanel> \
-  --k <k> \
-  --partitions <partitions> \
-  --ndelta <ndelta> \
-  --nlambda <nlambda> \
-  --lambda.min.ratio <lambda.min.ratio> \
-  --alpha <alpha> \
-  --p_seq <p_seq> \
-  --sparse <sparse> \
-  --kb <kb> \
-  --Pvalthr <Pvalthr> \
-  --R2 <R2> \
-  --ensemble <ensemble> \
-  --verbose <verbose> \
-  --temp_path <temp_path>
-
-
+  **Parameters:**
 --userID: User account ID. This is a unique identifier for the user running the job.
 --submissionID: Job ID. This is a unique identifier for the job submission.
 --methods: Specifies the methods to be used for analysis. Multiple methods can be provided as a comma-separated list.
@@ -73,33 +67,27 @@ Rscript /home/ubuntu/pennprs/backend/code/single-ancestry.R \
 
 
 
+## Multi Ancestry
 
+    Rscript /home/ubuntu/pennprs/backend/code/multi_ancestry.R \
+      --userID <userID> \
+      --submissionID <submissionID> \
+      --method <method> \
+      --trait <trait> \
+      --race <race> \
+      --LDrefpanel <LDrefpanel> \
+      --k <k> \
+      --partitions <partitions> \
+      --ndelta <ndelta> \
+      --nlambda <nlambda> \
+      --lambda.min.ratio <lambda.min.ratio> \
+      --Ll <Ll> \
+      --Lc <Lc> \
+      --verbose <verbose> \
+      --temp_path <temp_path>
 
-
-
-
-Multi
-code
-Rscript /home/ubuntu/pennprs/backend/code/multi_ancestry.R \
-  --userID <userID> \
-  --submissionID <submissionID> \
-  --method <method> \
-  --trait <trait> \
-  --race <race> \
-  --LDrefpanel <LDrefpanel> \
-  --k <k> \
-  --partitions <partitions> \
-  --ndelta <ndelta> \
-  --nlambda <nlambda> \
-  --lambda.min.ratio <lambda.min.ratio> \
-  --Ll <Ll> \
-  --Lc <Lc> \
-  --verbose <verbose> \
-  --temp_path <temp_path>
-
-
-
--userID: User account ID. This is a unique identifier for the user running the job.
+**Parameters:**
+--userID: User account ID. This is a unique identifier for the user running the job.
 --submissionID: Job ID. This is a unique identifier for the job submission.
 --methods: Specifies the methods to be used for analysis. The default method is 'PROSPER'.
 --trait: The name of the trait being analyzed.
@@ -118,14 +106,16 @@ Rscript /home/ubuntu/pennprs/backend/code/multi_ancestry.R \
 
 
 
-2. Data requirements
+**Data requirements：**
 
-CHR     A1      A2      SNP     MAF     BETA    SE      P       N
-1       G       A       rs12562034      0.085736        0.012104        0.051204        0.8131  16162
-1       C       A       rs4970383       0.367982        0.0032909       0.027646        0.9052  17079
-1       C       T       rs4475691       0.402124        -0.0021203000000000003  0.026989        0.9374  17079
+| CHR | A1 | A2 | SNP        | MAF       | BETA                  | SE        | P       | N     |
+|-----|----|----|------------|-----------|-----------------------|-----------|---------|-------|
+| 1   | G  | A  | rs12562034 | 0.085736  | 0.012104              | 0.051204  | 0.8131  | 16162 |
+| 1   | C  | A  | rs4970383  | 0.367982  | 0.0032909             | 0.027646  | 0.9052  | 17079 |
+| 1   | C  | T  | rs4475691  | 0.402124  | -0.0021203000000000003| 0.026989  | 0.9374  | 17079 |
 
-Required columns in the files:
+
+**Required columns in the files:**
 
 SNP: SNP ID in the format of rsXXXX.
 CHR: chromosome number in the format of 1,2,...,22.
@@ -139,13 +129,10 @@ N: Sample size per variant. Note that for binary traits, it is effective sample 
 
 
 
-Output
+# Output
+
 The scripts single_ancestry.R will create directory 
 $PATH_out/trait_race_method_userID_submissionID/ and writes trait.method.PRS.txt and PRS_model_training_info.txt.
 
-
-
 The scripts multi_ancestry.R will create directory 
 $PATH_out/trait_race_method_userID_submissionID/ and writes trait.method.PRS.txt and PRS_model_training_info.txt.
-
-
