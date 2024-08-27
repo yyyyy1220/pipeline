@@ -44,20 +44,20 @@ These are two scripts, single_ancestry and multi_ancestry.
       --temp_path <temp_path>
 
   **Parameters:**
---userID: User account ID. This is a unique identifier for the user running the job.
---submissionID: Job ID. This is a unique identifier for the job submission.
---methods: Specifies the methods to be used for analysis. Multiple methods can be provided as a comma-separated list.
---trait: The name of the trait being analyzed.
---race: Specifies the race of the individuals in the training GWAS. Available options are EUR (European), AFR (African), AMR (Mixed American, Hispanic/Latino), EAS (East Asian), or SAS (South Asian).
---LDrefpanel: Specifies the linkage disequilibrium (LD) reference panel to be used. Options include '1kg' (1000 Genomes Project Phase 3) or 'ukbb' (UK Biobank).
---k: The number of folds for k-fold Monte Carlo Cross Validation (MCCV) used in PUMAS. Must be an integer greater than or equal to 2.
---partitions: Specifies the partitioning of the data for subsampling in PUMAS. The format should be '% training, % testing', where % testing equals 1 - % training.
---delta: Candidate values for the shrinkage parameter in L2 regularization. Multiple values can be provided as a comma-separated list.
---nlambda: The number of different candidate values for the lambda parameter (shrinkage parameter in L1 regularization).
---lambda.min.ratio: Ratio between the lowest and highest candidate values of lambda.
---alpha: A scaling factor for heritability, where H_2 = alpha * H_20. The default values recommended for the LDpred2 algorithm can be used.
---p_seq: A sequence of candidate values for the proportion of causal SNPs. Values should be provided as a comma-separated list.
---sparse: Whether to consider a sparse effect size distribution, where the majority of SNPs have effects shrunk to zero.
+--userID: User account ID. This is a unique identifier for the user running the job.<br>
+--submissionID: Job ID. This is a unique identifier for the job submission.<br>
+--methods: Specifies the methods to be used for analysis. Multiple methods can be provided as a comma-separated list.<br>
+--trait: The name of the trait being analyzed.<br>
+--race: Specifies the race of the individuals in the training GWAS. Available options are EUR (European), AFR (African), AMR (Mixed American, Hispanic/Latino), EAS (East Asian), or SAS (South Asian).<br>
+--LDrefpanel: Specifies the linkage disequilibrium (LD) reference panel to be used. Options include '1kg' (1000 Genomes Project Phase 3) or 'ukbb' (UK Biobank).<br>
+--k: The number of folds for k-fold Monte Carlo Cross Validation (MCCV) used in PUMAS. Must be an integer greater than or equal to 2.<br>
+--partitions: Specifies the partitioning of the data for subsampling in PUMAS. The format should be '% training, % testing', where % testing equals 1 - % training.<br>
+--delta: Candidate values for the shrinkage parameter in L2 regularization. Multiple values can be provided as a comma-separated list.<br>
+--nlambda: The number of different candidate values for the lambda parameter (shrinkage parameter in L1 regularization).<br>
+--lambda.min.ratio: Ratio between the lowest and highest candidate values of lambda.<br>
+--alpha: A scaling factor for heritability, where H_2 = alpha * H_20. The default values recommended for the LDpred2 algorithm can be used.<br>
+--p_seq: A sequence of candidate values for the proportion of causal SNPs. Values should be provided as a comma-separated list.<br>
+--sparse: Whether to consider a sparse effect size distribution, where the majority of SNPs have effects shrunk to zero.<br>
 --kb: SNPs within this range of the index SNP are considered for the Clumping (C) step in the analysis.
 --Pvalthr: Specifies the p-value thresholds for the Thresholding (T) step. Multiple values can be provided as a comma-separated list.
 --R2: SNPs with squared correlation higher than the specified R2 value with the index SNPs will be removed.
