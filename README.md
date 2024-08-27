@@ -45,7 +45,7 @@ These are two scripts, single_ancestry and multi_ancestry.
 
   **Parameters:**
 --userID: User account ID. This is a unique identifier for the user running the job.
---submissionID: Job ID. This is a unique identifier for the job submission.
+--submissionID: Job ID. This is a unique identifier for the job submission.<br>
 --methods: Specifies the methods to be used for analysis. Multiple methods can be provided as a comma-separated list.
 --trait: The name of the trait being analyzed.
 --race: Specifies the race of the individuals in the training GWAS. Available options are EUR (European), AFR (African), AMR (Mixed American, Hispanic/Latino), EAS (East Asian), or SAS (South Asian).
